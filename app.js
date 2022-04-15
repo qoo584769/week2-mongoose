@@ -4,6 +4,8 @@ const {
   editTodo,
   deleteOneTodo,
   deleteAllTodo,
+  options,
+  noRoute,
 } = require('./controller/todoController.js');
 
 const app = async (req, res, next) => {
@@ -15,13 +17,7 @@ const app = async (req, res, next) => {
   else if (url.startsWith('/post/') && method == 'DELETE')
     deleteOneTodo(req, res);
   else if (url === '/post' && method === 'DELETE') deleteAllTodo(req, res);
-  else if (method === 'OPTIONS') {
-    res.writeHeader(200, headers);
-    res.end();
-  } else {
-    res.writeHeader(404, headers);
-    res.write('查無此路由');
-    res.end();
-  }
+  else if (method === 'OPTIONS') options(req, res);
+  else noRoute(req, res);
 };
 module.exports = { app };

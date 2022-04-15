@@ -67,5 +67,10 @@ const deleteAllTodo = async (req, res) => {
     HttpMethod(res, 404, 'false', error, '刪除多筆資料失敗');
   }
 };
-
-module.exports = { getTodo, postTodo, editTodo, deleteOneTodo, deleteAllTodo };
+const options = async (req, res)=>{
+  HttpMethod(res, 200, 'true', '連線測試', '連線成功');
+}
+const noRoute = async (req, res)=>{
+  HttpMethod(res, 404, 'false', '連線測試', '查無此路由');
+}
+module.exports = { getTodo, postTodo, editTodo, deleteOneTodo, deleteAllTodo,options,noRoute };

@@ -60,6 +60,7 @@ async function patchDB(schemaModel, modelData) {
     return error;
   }
 }
+//直接刪除 未使用軟刪除
 async function deleteOneDB(schemaModel, id) {
   // 等待資料庫連線
   await DBConnect();

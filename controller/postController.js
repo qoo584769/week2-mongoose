@@ -10,7 +10,7 @@ const buffParse = async (req) => {
   return parseddata;
 };
 
-const getTodo = async (req, res) => {
+const getPost = async (req, res) => {
   try {
     const result = await modelOperator(req.method);
     HttpMethod(res, 200, 'success', result, '資料查詢成功');
@@ -19,7 +19,7 @@ const getTodo = async (req, res) => {
     console.log('查詢失敗');
   }
 };
-const postTodo = async (req, res) => {
+const postPost = async (req, res) => {
   try {
     const data = await buffParse(req);
     const result = await modelOperator(req.method, data);
@@ -33,7 +33,7 @@ const postTodo = async (req, res) => {
     HttpMethod(res, 404, 'false', error, '資料格式錯誤');
   }
 };
-const editTodo = async (req, res) => {
+const editPost = async (req, res) => {
   try {
     let data = await buffParse(req);
     const id = req.url.split('/').pop();
@@ -45,7 +45,7 @@ const editTodo = async (req, res) => {
     HttpMethod(res, 404, 'false', error, '資料格式錯誤');
   }
 };
-const deleteOneTodo = async (req, res) => {
+const deleteOnePost = async (req, res) => {
   try {
     const id = req.url.split('/').pop();
     const result = await modelOperator(req.method, id);
@@ -58,7 +58,7 @@ const deleteOneTodo = async (req, res) => {
     HttpMethod(res, 404, 'false', error, '資料不存在');
   }
 };
-const deleteAllTodo = async (req, res) => {
+const deleteAllPost = async (req, res) => {
   try {
     const result = await modelOperator(req.method, '刪除全部');
     HttpMethod(res, 200, 'success', result, '刪除多筆資料成功');
@@ -73,4 +73,4 @@ const options = async (req, res)=>{
 const noRoute = async (req, res)=>{
   HttpMethod(res, 404, 'false', '連線測試', '查無此路由');
 }
-module.exports = { getTodo, postTodo, editTodo, deleteOneTodo, deleteAllTodo,options,noRoute };
+module.exports = { getPost, postPost, editPost, deleteOnePost, deleteAllPost,options,noRoute };

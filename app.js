@@ -6,7 +6,7 @@ const {
   deleteAllTodo,
   options,
   noRoute,
-} = require('./controller/todoController.js');
+} = require('./controller/postController.js');
 
 const app = async (req, res, next) => {
   const { url, method } = req;
